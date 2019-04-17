@@ -5,58 +5,42 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp19
-//стр.106 зад.5
 {
     class Program
-    {
-        static string[] cvetove(string[] inputArray)
+    { 
+        static void Main(string[] args)
         {
-            int r=0, b=0, w=0;
-            int s = 0;
-            string[] temp = new string[inputArray.Length];
-            for (int i = 0; i < inputArray.Length - 1; i++)
+            string[] test = { "red", "blue", "white", "red", "white", "red", "blue", "red", "white", "red", "red", "blue", "red", "blue" };
+            int a = 0;
+            int b = test.Length-1;
+            for (int i = 0; i < b; i++)
             {
-                if (String.Equals(inputArray[i],"red"))
+                if (String.Equals(test[i], "red"))
                 {
-                    r++;
+                    string tempp = test[i];
+                    test[i] = test[a];
+                    test[a] = tempp;
+                    a++;
                 }
-                if (String.Equals(inputArray[i], "blue"))
+                else if (String.Equals(test[i], "white"))
                 {
-                    b++;
+                    string temp = test[i];
+                    test[i] = test[b];
+                    test[b] = temp;
+                    b--;
                 }
-                if (String.Equals(inputArray[i], "white"))
+                else if(String.Equals(test[i], "blue"))
                 {
-                    w++;
+                    continue;
                 }
             }
-            while (r != 0)
-            {
-                temp[s] = "red";
-                r--;
-                s++;
-            } while (b != 0)
-            {
-                temp[s] = "blue";
-                b--;
-                s++;
-            } while (w != 0)
-            {
-                temp[s] = "while";
-                w--;
-                s++;
-            }
-            Array.Copy(temp, inputArray, inputArray.Length);
-            return inputArray;
-        }
-            static void Main(string[] args)
-            {
-            string[] test = { "red","blue", "white" ,"red", "white","red","red", "white","red","red", "blue","red" };
-            Console.WriteLine(cvetove(test));
             for (int i = 0; i < test.Length; i++)
             {
                 Console.WriteLine(test[i]);
             }
-            }
+             Console.ReadLine();
         }
     }
+}
+
 
